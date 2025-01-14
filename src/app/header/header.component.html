@@ -1,0 +1,29 @@
+<mat-toolbar>
+
+  <!-- logo -->
+  <div class="container d-flex flex-row justify-content-between align-items-center">
+    @if (!themeService.isThemeLight()) {
+    <img src="logo.png" alt="" class="logo" (click)="reloadPage()">
+    }
+    @else {
+    <img src="logo.png" alt="" class="logo" (click)="reloadPage()">
+    }
+
+    <!-- title -->
+     <span class="h2">{{titleChangerService.title()}}</span>
+
+    <!-- toggle for temp unit change -->
+    <div class="d-flex flex-row justify-content-between align-items-center">
+      <!-- toggle for theme change -->
+      <button mat-icon-button (click)="toggleTheme()">
+        @if (themeService.isThemeLight()) {
+        <mat-icon>dark_mode</mat-icon>
+        }
+        @else {
+        <mat-icon>light_mode</mat-icon>
+        }
+      </button>
+    </div>
+  </div>
+
+</mat-toolbar>
