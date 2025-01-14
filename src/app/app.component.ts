@@ -4,6 +4,7 @@ import { MaterialModule } from './helper/material.module';
 import { HeaderComponent } from './header/header.component';
 import { DOCUMENT } from '@angular/common';
 import { ThemeService } from './services/theme.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
   private readonly renderer: Renderer2 = inject(Renderer2);
   private readonly document: Document = inject(DOCUMENT);
   private readonly themeService: ThemeService = inject(ThemeService);
+  readonly apiService: ApiService = inject(ApiService);
 
   constructor() {
     // Reactively watch for changes

@@ -16,7 +16,6 @@ import { MaterialModule } from '../../helper/material.module';
   styleUrl: './log.component.scss'
 })
 export class LogComponent implements OnInit {
-  spinner: boolean = true;
   isNotPassword: boolean = false;
   inputType: string = 'password'
 
@@ -47,7 +46,8 @@ export class LogComponent implements OnInit {
         this.handleLogin(response)
       },
       error: (error) => {
-        this.snackBarService.showSnackBar(error.error.message)}
+        this.snackBarService.showSnackBar(error.error.message)
+      }
     })
   }
 

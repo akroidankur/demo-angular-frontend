@@ -1,12 +1,12 @@
 <mat-toolbar>
 
   <!-- logo -->
-  <div class="container d-flex flex-row justify-content-between align-items-center">
+  <div class="d-flex flex-row justify-content-between align-items-center">
     @if (!themeService.isThemeLight()) {
-    <img src="logo.png" alt="" class="logo" (click)="reloadPage()">
+    <img src="logo.png" alt="" class="logo">
     }
     @else {
-    <img src="logo.png" alt="" class="logo" (click)="reloadPage()">
+    <img src="logo.png" alt="" class="logo">
     }
 
     <!-- title -->
@@ -21,6 +21,15 @@
         }
         @else {
         <mat-icon>light_mode</mat-icon>
+        }
+      </button>
+
+      <button mat-icon-button (click)="logout()" *ngIf="tokenService.isLoggedIn()">
+        @if (themeService.isThemeLight()) {
+        <mat-icon>logout</mat-icon>
+        }
+        @else {
+        <mat-icon>logout</mat-icon>
         }
       </button>
     </div>

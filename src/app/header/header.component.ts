@@ -2,6 +2,7 @@ import { Component, effect, inject } from '@angular/core';
 import { MaterialModule } from '../helper/material.module';
 import { ThemeService } from '../services/theme.service';
 import { TitleChangerService } from '../services/title/title-changer.service';
+import { TokenService } from '../services/auth/token.service';
 
 @Component({
   selector: 'app-header',
@@ -13,20 +14,16 @@ import { TitleChangerService } from '../services/title/title-changer.service';
 export class HeaderComponent {
   readonly themeService: ThemeService = inject(ThemeService);
   readonly titleChangerService: TitleChangerService = inject(TitleChangerService);
-
+readonly tokenService: TokenService = inject(TokenService);
   constructor() {
-    // effect(() => {
-    //   this.widthService.width();
-    // });
-  }
-
-  //reload page
-  reloadPage(): void {
-    window.location.reload();
   }
 
   //toggle theme
   toggleTheme(): void {
     this.themeService.setTheme(!this.themeService.isThemeLight());
+  }
+
+  logout(): void {
+    this.tokenService.removeToken();
   }
 }
