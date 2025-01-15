@@ -4,7 +4,7 @@ export interface Roles{
 }
 
 export interface Staff {
-    _id: string;
+    _id?: string;
     fullName: string;
     username: string;
     email: string;

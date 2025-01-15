@@ -13,4 +13,124 @@
     <mat-icon>west</mat-icon>
   </button>
 
+  <form #staffNgForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Full Name -->
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input
+        matInput
+        name="fullName"
+        [(ngModel)]="staffForm.fullName"
+        required
+        #fullName="ngModel"
+      />
+      <mat-error *ngIf="fullName.errors?.['required']">Full Name is required</mat-error>
+    </mat-form-field>
+
+    <!-- Username -->
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        name="username"
+        [(ngModel)]="staffForm.username"
+        required
+        #username="ngModel"
+      />
+      <mat-error *ngIf="username.errors?.['required']">Username is required</mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [(ngModel)]="staffForm.email"
+        required
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.errors?.['required']">Email is required</mat-error>
+      <mat-error *ngIf="email.errors?.['pattern']">Invalid email format</mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        [(ngModel)]="staffForm.password"
+        required
+        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+        #password="ngModel"
+      />
+      <mat-error *ngIf="password.errors?.['required']">Password is required</mat-error>
+      <mat-error *ngIf="password.errors?.['pattern']">
+        Password must be at least 8 characters long and contain both letters and numbers
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input
+        matInput
+        type="tel"
+        name="phone"
+        [(ngModel)]="staffForm.phone"
+        required
+        pattern="^[0-9]{10}$"
+        #phone="ngModel"
+      />
+      <mat-error *ngIf="phone.errors?.['required']">Phone number is required</mat-error>
+      <mat-error *ngIf="phone.errors?.['pattern']">Phone number must be 10 digits</mat-error>
+    </mat-form-field>
+
+    <!-- Role -->
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select
+        name="role"
+        [(ngModel)]="staffForm.role"
+        required
+        #role="ngModel"
+      >
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{ role.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="role.errors?.['required']">Role is required</mat-error>
+    </mat-form-field>
+
+
+    <!-- Status -->
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select
+        name="status"
+        [(ngModel)]="staffForm.status"
+        required
+        #status="ngModel"
+      >
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">Inactive</mat-option>
+      </mat-select>
+      <mat-error *ngIf="status.errors?.['required']">Status is required</mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button
+    mat-raised-button
+    color="primary"
+    [disabled]="staffNgForm.invalid"
+  >
+    Submit
+  </button>
+  </form>
+
+
 }
