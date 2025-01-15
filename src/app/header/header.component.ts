@@ -3,6 +3,7 @@ import { MaterialModule } from '../helper/material.module';
 import { ThemeService } from '../services/theme.service';
 import { TitleChangerService } from '../services/title/title-changer.service';
 import { TokenService } from '../services/auth/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,9 @@ import { TokenService } from '../services/auth/token.service';
 export class HeaderComponent {
   readonly themeService: ThemeService = inject(ThemeService);
   readonly titleChangerService: TitleChangerService = inject(TitleChangerService);
-readonly tokenService: TokenService = inject(TokenService);
+  readonly tokenService: TokenService = inject(TokenService);
+  private router: Router = inject(Router);
+
   constructor() {
   }
 
@@ -25,5 +28,6 @@ readonly tokenService: TokenService = inject(TokenService);
 
   logout(): void {
     this.tokenService.removeToken();
+    this.router.navigate(['/']);
   }
 }
