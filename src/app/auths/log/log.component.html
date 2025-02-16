@@ -23,14 +23,22 @@
                 placeholder="Password">
             </mat-form-field>
 
-            <button mat-icon-button type="button" class="toggler" (click)="passwordToggler()">
+            <button mat-icon-button type="button" (click)="passwordToggler()">
               <span class="material-icons" *ngIf="isNotPassword">&#xe8f4;</span>
               <span class="material-icons" *ngIf="!isNotPassword">&#xe8f5;</span>
             </button>
           </div>
 
-          <button mat-raised-button type="button" class="mb-2"(click)="logIn()" [disabled]="loginForm.invalid">Log In</button>
+          <button mat-raised-button type="button" class="mb-2  toggler" (click)="logIn()" [disabled]="loginForm.invalid">Log
+            In</button>
         </form>
+
+        <div class="field mb-2 text-center">
+          <p>Username: demo</p>
+          <p>Password: demo</p>
+          <p>Note: The Backend API URL might experience some delays since it is hosted on the free tier.
+          </p>
+        </div>
 
       </mat-card-content>
     </mat-card>
